@@ -341,6 +341,14 @@ end
 
 # constructors for built-in types
 
+"""
+    WeakRef(x)
+
+`w = WeakRef(x)` constructs a [weak reference](https://en.wikipedia.org/wiki/Weak_reference)
+to the Julia value `x`: although `w` contains a reference to `x`, it does not prevent `x` from being 
+garbage collected.   `w.value` is either `x` (if `x` has not been garbage-collected yet) or `nothing`
+(if `x` has been garbage-collected).
+"""
 mutable struct WeakRef
     value
     WeakRef() = WeakRef(nothing)
